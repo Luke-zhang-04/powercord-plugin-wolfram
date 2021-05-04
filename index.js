@@ -25,11 +25,13 @@ module.exports = class Wolfram extends Plugin {
         powercord.api.commands.registerCommand({
             command: "wolfram",
             description: "Lets you fetch a question from Wolfram",
-            usage: "{c} [--send]",
+            usage: "{c} [--send] [--private]",
             executor: async (args) => {
-                const send = args.includes("--send")
+                const shouldSend = args.includes("--send")
                     ? !!args.splice(args.indexOf("--send"), 1)
                     : this.settings.get("send", false)
+                const isPrivate =
+                    args.includes("--private") && !!args.splice(args.indexOf("--private"), 1)
                 const input = args.join(" ")
 
                 if (!input) {
@@ -52,14 +54,16 @@ module.exports = class Wolfram extends Plugin {
                         )
 
                         return {
-                            send,
+                            send: !isPrivate && shouldSend,
                             result,
                         }
                     }
 
                     return {
                         send: false,
-                        result: wrapResult(`*Input:* ${input}\n*Error*: ${res.body?.toString() ?? "Unknown"}`),
+                        result: wrapResult(
+                            `*Input:* ${input}\n*Error*: ${res.body?.toString() ?? "Unknown"}`,
+                        ),
                     }
                 } catch (err) {
                     const error = err instanceof Error ? err.toString() : String(err)
