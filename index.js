@@ -9,6 +9,13 @@ module.exports = class Wolfram extends Plugin {
     async startPlugin() {
         const appID = this.settings.get("appID", "")
 
+        if (!appID) {
+            return {
+                send: false,
+                result: "No App ID provided; set an App ID in settings",
+            }
+        }
+
         powercord.api.settings.registerSettings("wolfram", {
             category: this.entityID,
             label: "Wolfram",
