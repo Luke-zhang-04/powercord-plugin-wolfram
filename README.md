@@ -9,7 +9,7 @@ This plugin is an improved fork of the [original Wolfram plugin](https://github.
 ```bash
 cd /opt/powercord/src/Powercord/plugins # Move into the plugins folder
 
-git clone --single-branch --branch release https://github.com/Luke-zhang-04/powercord-plugin-emojify.git
+git clone --single-branch --branch release https://github.com/Luke-zhang-04/powercord-plugin-wolfram.git
 ```
 
 ## Usage
