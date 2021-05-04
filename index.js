@@ -59,7 +59,7 @@ module.exports = class Wolfram extends Plugin {
 
                     return {
                         send: false,
-                        result: `Unknown failure.`,
+                        result: wrapResult(`*Input:* ${input}\n*Error*: ${res.body?.toString() ?? "Unknown"}`),
                     }
                 } catch (err) {
                     const error = err instanceof Error ? err.toString() : String(err)
