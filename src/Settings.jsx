@@ -1,8 +1,8 @@
-const {React} = require("powercord/webpack")
-const {TextInput, SwitchItem} = require("powercord/components/settings")
+import {React} from "powercord/webpack"
+import {TextInput, SwitchItem} from "powercord/components/settings"
 
-module.exports = ({getSetting, updateSetting, toggleSetting}) => (
-    <div>
+export const Settings = ({getSetting, updateSetting, toggleSetting}) => (
+    <>
         <TextInput
             note="Wolfram AppID used"
             defaultValue={getSetting("appID", "")}
@@ -18,5 +18,7 @@ module.exports = ({getSetting, updateSetting, toggleSetting}) => (
         >
             Send Result
         </SwitchItem>
-    </div>
+    </>
 )
+
+export default Settings

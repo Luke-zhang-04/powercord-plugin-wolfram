@@ -1,5 +1,9 @@
 {
+  "scripts": {
+    "build": "tsc && cp -v manifest.json LICENSE README.md dist"
+  },
   "devDependencies": {
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.4"
   }
 }

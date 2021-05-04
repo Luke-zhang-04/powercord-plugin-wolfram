@@ -1,10 +1,10 @@
-const {Plugin} = require("powercord/entities")
-const {get} = require("powercord/http")
-
-const Settings = require("./Settings.jsx")
+import {Plugin} from "powercord/entities"
+import Settings from "./Settings"
+import http from "powercord/http"
 
 const wrapResult = (str) => `-- **Wolfram Alpha** --\n${str}\n------------------------`
 
+// NOTE: Class must be exported like this. Keep this.
 module.exports = class Wolfram extends Plugin {
     async startPlugin() {
         const appID = this.settings.get("appID", "")
@@ -46,7 +46,7 @@ module.exports = class Wolfram extends Plugin {
                 )}&units=metric`
 
                 try {
-                    const res = await get(url)
+                    const res = await http.get(url)
 
                     if (res.statusCode == 200) {
                         const result = wrapResult(
