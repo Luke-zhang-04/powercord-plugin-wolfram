@@ -4,6 +4,14 @@ A Powercord plugin which adds a command to calculate things using Wolfram's API.
 
 This plugin is an improved fork of the [original Wolfram plugin](https://github.com/ItsSyfe/Wolfram/)
 
+## Installation
+
+```bash
+cd /opt/powercord/src/Powercord/plugins # Move into the plugins folder
+
+git clone --single-branch --branch release https://github.com/Luke-zhang-04/powercord-plugin-emojify.git
+```
+
 ## Usage
 
 As this plugin implements Wolfram's API through [Wolfram Alpha](https://www.wolframalpha.com/), an API key registered through their website is needed.
