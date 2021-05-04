@@ -1,0 +1,7 @@
+{
+  "name": "Wolfram",
+  "description": "Checks query with Wolfram Alpha API.",
+  "author": "Syfe, Luke Zhang",
+  "version": "1.1.0",
+  "license": "MIT"
+}
