@@ -30,7 +30,6 @@ module.exports = class Wolfram extends Plugin {
                 const send = args.includes("--send")
                     ? !!args.splice(args.indexOf("--send"), 1)
                     : this.settings.get("send", false)
-
                 const input = args.join(" ")
 
                 if (!input) {
@@ -40,20 +39,21 @@ module.exports = class Wolfram extends Plugin {
                     }
                 }
 
-                let url = `https://api.wolframalpha.com/v1/result?appid=${appID}&i=${encodeURIComponent(
+                const url = `https://api.wolframalpha.com/v1/result?appid=${appID}&i=${encodeURIComponent(
                     input,
                 )}&units=metric`
 
                 try {
-                    let res = await get(url)
+                    const res = await get(url)
 
                     if (res.statusCode == 200) {
-                        let wMSG = wrapResult(
+                        const result = wrapResult(
                             `*Input:* ${input}\n*Output:* ${res.body.toString()}`,
                         )
+
                         return {
                             send,
-                            result: wMSG,
+                            result,
                         }
                     }
 
