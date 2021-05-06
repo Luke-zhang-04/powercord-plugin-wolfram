@@ -1,20 +1,20 @@
+/**
+ * Powercord Plugin Wolfram
+ *
+ * @license MIT https://github.com/Luke-zhang-04/powercord-plugin-wolfram
+ * @copyright 2021 Syfe, Luke Zhang
+ */
+
 import {Plugin} from "powercord/entities"
 import Settings from "./Settings"
 import http from "powercord/http"
 
-const wrapResult = (str) => `-- **Wolfram Alpha** --\n${str}\n------------------------`
+const wrapResult = (str: string) => `-- **Wolfram Alpha** --\n${str}\n------------------------`
 
 // NOTE: Class must be exported like this. Keep this.
 module.exports = class Wolfram extends Plugin {
     async startPlugin() {
-        const appID = this.settings.get("appID", "")
-
-        if (!appID) {
-            return {
-                send: false,
-                result: "No App ID provided; set an App ID in settings",
-            }
-        }
+        let appID = this.settings.get<string | undefined>("appID", undefined)
 
         powercord.api.settings.registerSettings("wolfram", {
             category: this.entityID,
@@ -27,6 +27,16 @@ module.exports = class Wolfram extends Plugin {
             description: "Lets you fetch a question from Wolfram",
             usage: "{c} [--send] [--private]",
             executor: async (args) => {
+                if (
+                    (appID ??= this.settings.get<string | undefined>("appID", undefined)) ===
+                    undefined
+                ) {
+                    return {
+                        send: false,
+                        result: "No App ID provided; set an App ID in settings.",
+                    }
+                }
+
                 const shouldSend = args.includes("--send")
                     ? !!args.splice(args.indexOf("--send"), 1)
                     : this.settings.get("send", false)
@@ -62,7 +72,7 @@ module.exports = class Wolfram extends Plugin {
                     return {
                         send: false,
                         result: wrapResult(
-                            `*Input:* ${input}\n*Error*: ${res.body?.toString() ?? "Unknown"}`,
+                            `*Input:* ${input}\n*Error*: ${res.body.toString() ?? "Unknown"}`,
                         ),
                     }
                 } catch (err) {

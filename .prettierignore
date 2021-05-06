@@ -6,3 +6,4 @@ lib/
 tsconfig*.json
 public/css
 public/js
+dist

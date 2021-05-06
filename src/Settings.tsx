@@ -1,13 +1,22 @@
+/**
+ * Powercord Plugin Wolfram
+ *
+ * @license MIT https://github.com/Luke-zhang-04/powercord-plugin-wolfram
+ * @copyright 2021 Syfe, Luke Zhang
+ */
+
 import {React} from "powercord/webpack"
 import {TextInput, SwitchItem} from "powercord/components/settings"
 
-export const Settings = ({getSetting, updateSetting, toggleSetting}) => (
+export const Settings = ({getSetting, updateSetting, toggleSetting}: RenderProps) => (
     <>
         <TextInput
             note="Wolfram AppID used"
             defaultValue={getSetting("appID", "")}
             required={true}
-            onChange={(val) => updateSetting("appID", val.endsWith("/") ? val.slice(0, -1) : val)}
+            onChange={(val: string) =>
+                updateSetting("appID", val.endsWith("/") ? val.slice(0, -1) : val)
+            }
         >
             Wolfram AppID
         </TextInput>

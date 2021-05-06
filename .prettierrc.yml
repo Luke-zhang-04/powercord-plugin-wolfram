@@ -14,6 +14,15 @@ tabWidth: 4
 trailingComma: "all"
 useTabs: false
 
+# JSDoc plugin
+jsdocSpaces: 1
+jsdocDescriptionWithDot: false
+jsdocDescriptionTag: false
+jsdocVerticalAlignment: false
+jsdocKeepUnParseAbleExampleIndent: false
+jsdocSingleLineComment: false
+tsdoc: true
+
 overrides:
   - files:
       - "*.html"
