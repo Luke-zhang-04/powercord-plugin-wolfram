@@ -9,7 +9,7 @@ import {Plugin} from "powercord/entities"
 import Settings from "./Settings"
 import http from "powercord/http"
 
-const wrapResult = (str: string) => `—— **Wolfram Alpha** ——\n${str}\n————————————————————————`
+const wrapResult = (str: string) => `――― **Wolfram Alpha** ―――\n${str}\n―――――――――――――`
 
 // NOTE: Class must be exported like this. Keep this.
 module.exports = class Wolfram extends Plugin {
