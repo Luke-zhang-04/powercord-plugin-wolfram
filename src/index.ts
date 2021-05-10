@@ -60,7 +60,7 @@ module.exports = class Wolfram extends Plugin {
 
                     if (res.statusCode == 200) {
                         const result = wrapResult(
-                            `*Input:* ${input}\n*Output:* ${res.body.toString()}`,
+                            `*Input:* \`${input}\`\n*Output:* \`${res.body.toString()}\``,
                         )
 
                         return {
